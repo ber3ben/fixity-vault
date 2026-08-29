@@ -88,3 +88,5 @@ Additional component-level styling (e.g., metric card borders, code block contai
 ## License & Attribution
 
 This tool processes publicly available metadata from the Internet Archive. Exported credit blocks are formatted for public domain attribution and archival recordkeeping.
+
+### I do not work for or are affiliated with the Internet Archive. I'm just a big fan with ideas.
