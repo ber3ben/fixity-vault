@@ -1,3 +1,5 @@
+# README
+
 **Fixity Vault** is a lightweight, high-contrast Streamlit dashboard and audit engine designed to query, evaluate, and standardize metadata from the [Internet Archive](https://archive.org). Built for archivists, creative professionals, and researchers, it validates media assets, calculates collection health scores, and generates batch public domain attribution blocks.
 
 ---
