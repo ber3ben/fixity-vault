@@ -15,54 +15,95 @@
 * **Interactive Media Inspector:** Side-by-side inspector window that dynamically streams audio/video or displays image previews based on table selection.
 * **Multi-Row Batch Credit Export:** Select single or multiple items to instantly generate, copy, or export standardized **Public Domain Credit Blocks** as plain text (`.txt`).
 * **Complete Audit Export:** One-click CSV export containing the full dataset and all underlying metadata columns.
+* **Optional Authentication Layer:** Features built-in, lightweight password protection via Streamlit session state and local secrets management.
 * **Accessible Light Palette:** High-contrast, non-neutral color scheme designed for readability and WCAG compliance.
 
 ---
 
+## Tech Stack
+
+* **UI & Dashboard:** [Streamlit](https://streamlit.io/) (Custom CSS with high-contrast accessible styling)
+* **Data Processing & Analytics:** [Pandas](https://pandas.pydata.org/)
+* **Schema Validation & Data Integrity:** [Pydantic v2](https://docs.pydantic.dev/)
+* **API Communications:** `requests` / Internet Archive Advanced Search & Metadata API
+  
+---
 ## Project Structure
 
 ```text
 fixity-vault/
-├── app.py                     # Main Streamlit web application & interface
-├── audit_engine.py            # Internet Archive API query & metadata processing engine
-├── requirements.txt           # Python package dependencies
-└── .streamlit/
-    └── config.toml            # Global Streamlit theme & UI configurations
+├── .streamlit/
+│   └── secrets.toml        # Local secrets (password auth, ignored by Git)
+├── app.py                  # Main Streamlit dashboard UI & authentication
+├── audit_engine.py         # Data fetching, metric calculations, & pipeline processing
+├── schema.py               # Pydantic v2 schemas and validation logic
+├── test_pipeline.py        # Local verification and integration test suite
+├── requirements.txt        # Core project dependencies
+└── README.md               # Project documentation
 
 ```
 
 ---
 
-## Quickstart Guide
+## Local Quickstart Guide
 
 ### 1. Prerequisites
 
-Ensure you have **Python 3.9+** installed on your system.
+Ensure you have Python installed on your system.
 
-### 2. Installation
-
-Clone this repository and install the dependencies in your active Python environment:
+### 2. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/fixity-vault.git
+git clone [https://github.com/your-username/fixity-vault.git](https://github.com/your-username/fixity-vault.git)
 cd fixity-vault
 
-# Install or upgrade required dependencies
-python -m pip install --upgrade "streamlit>=1.35.0" pandas requests
-
 ```
 
-### 3. Launch the Dashboard
-
-Always launch the app using `python -m streamlit run` to ensure Streamlit executes inside your target environment:
+### 3. Create & Activate a Virtual Environment
 
 ```bash
-python -m streamlit run app.py
+# macOS/Linux
+python3 -m venv venv
+source venv/bin/activate
+
+# Windows (Command Prompt)
+python -m venv venv
+venv\Scripts\activate
 
 ```
 
-The application will launch automatically in your browser at `http://localhost:8501`.
+### 4. Install Dependencies
 
+```bash
+pip install -r requirements.txt
+
+```
+
+### 5. Run the Local Test Suite
+
+Verify that all schema validators, engine endpoints, and conversion utilities work before launching the UI:
+
+```bash
+python test_pipeline.py
+
+```
+
+### 6. Launch the Application
+
+```bash
+streamlit run app.py
+
+```
+
+Navigating to `http://localhost:8501` in your web browser will open the app.
+
+---
+### Environment & Secrets Setup
+
+1. Create a `.streamlit` folder in the root directory.
+2. Add a `secrets.toml` file inside `.streamlit/` with your local access password:
+   ```toml
+   PORTFOLIO_PASSWORD = "your_custom_password"
 ---
 
 ## Theme & Accessibility Configuration
@@ -87,6 +128,8 @@ Additional component-level styling (e.g., metric card borders, code block contai
 
 ## License & Attribution
 
-This tool processes publicly available metadata from the Internet Archive. Exported credit blocks are formatted for public domain attribution and archival recordkeeping.
+Distributed under the MIT License. See `LICENSE` for more information.
 
-### I do not work for or are affiliated with the Internet Archive. I'm just a big fan with ideas.
+This tool processes publicly available metadata from the Internet Archive. Exported credit blocks are formatted for public domain attribution.
+
+### I do not work for or are professionally affiliated with the Internet Archive.
