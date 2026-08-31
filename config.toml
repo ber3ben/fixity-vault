@@ -1,0 +1,15 @@
+[theme]
+# Primary accent color for sliders, active tabs, buttons, and highlights
+primaryColor = "#007A87"
+
+# Main background color (Vibrant, light seafoam-cyan tint instead of neutral/white)
+backgroundColor = "#E6F4F1"
+
+# Secondary background for sidebar and card elements (Slightly deeper crisp mint)
+secondaryBackgroundColor = "#CFEADF"
+
+# Main text color (Dark Navy Blue for extreme high contrast > 10:1 ratio)
+textColor = "#0A192F"
+
+# Font family ('sans serif', 'serif', or 'monospace')
+font = "sans serif"
