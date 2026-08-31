@@ -1,0 +1,24 @@
+# Streamlit Secrets (NEVER COMMIT THIS FILE)
+.streamlit/secrets.toml
+
+# Streamlit Local Cache & Runtime
+.streamlit/cache/
+
+# Python Virtual Environments
+venv/
+.venv/
+env/
+
+# Python Compiled Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS Metadata
+.DS_Store
+Thumbs.db
+
+PORTFOLIO_PASSWORD = "YourSecretPassword123"
+
+# Optional: Add any future API keys or tokens here
+# IA_API_KEY = "your_key_here"
