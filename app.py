@@ -10,7 +10,7 @@ def check_password():
     if st.session_state.get("password_correct", False):
         return True
 
-    st.title("🔒 Fixity Vault - Authorized Access Only")
+    st.title("Fixity Vault - Authorized Access Only")
     st.caption("Please enter the portfolio access password to view the live app.")
 
     password_input = st.text_input("Password", type="password")
