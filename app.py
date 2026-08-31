@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 from audit_engine import run_full_audit
 
-# MUST BE THE FIRST STREAMLIT COMMAND EXECUTED
 st.set_page_config(page_title="Fixity Vault", layout="wide")
 
 
