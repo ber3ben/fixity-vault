@@ -22,7 +22,7 @@ def check_password():
             st.session_state["password_correct"] = True
             st.rerun()
         else:
-            st.error("😕 Incorrect password.")
+            st.error("Incorrect password.")
     return False
 
 
@@ -77,7 +77,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.title("🗄️ Fixity Vault")
+st.title("Fixity Vault")
 st.caption("Standardized Internet Archive metadata for creative users, archivists, and researchers.")
 
 @st.cache_data
@@ -88,7 +88,7 @@ def convert_df_to_csv(input_df: pd.DataFrame) -> bytes:
 # ---------------------------------------------------------
 # SIDEBAR CONTROLS
 # ---------------------------------------------------------
-st.sidebar.header("⚙️ Query & Audit Settings")
+st.sidebar.header("Query & Audit Settings")
 
 target_collection = st.sidebar.text_input(
     "Internet Archive Collection",
@@ -106,7 +106,7 @@ sample_limit = st.sidebar.slider(
 )
 
 st.sidebar.divider()
-st.sidebar.header("🔍 Filter Results")
+st.sidebar.header("Filter Results")
 
 min_health = st.sidebar.slider(
     "Minimum Health Score (%)",
@@ -130,7 +130,7 @@ with st.spinner(f"Fetching and auditing {sample_limit} items from '{target_colle
     raw_df = run_full_audit(collection_name=target_collection, sample_size=sample_limit)
 
 if raw_df.empty or "health_score" not in raw_df.columns:
-    st.error("⚠️ Unable to load audit data. Please check your network connection or Internet Archive API status.")
+    st.error("Unable to load audit data. Please check your network connection or Internet Archive API status.")
 else:
     all_issues = set()
     for issue_str in raw_df["missing_issues"].dropna():
@@ -178,11 +178,11 @@ else:
         header_text_col, dl_button_col = st.columns([2, 1])
         with header_text_col:
             st.subheader("Collection Overview")
-            st.caption("💡 *Select row(s) to inspect media. Full audit data is included in the CSV export.*")
+            st.caption("*Select row(s) to inspect media. Full audit data is included in the CSV export.*")
         with dl_button_col:
             csv_bytes = convert_df_to_csv(filtered_df)
             st.download_button(
-                label="📥 Export Full (CSV)",
+                label="Export Full (CSV)",
                 data=csv_bytes,
                 file_name="archive_audit_report.csv",
                 mime="text/csv",
@@ -217,7 +217,7 @@ else:
     # RIGHT SIDE INSPECTOR & BULK CREDIT GENERATOR
     # ---------------------------------------------------------
     with inspector_col:
-        st.subheader("🎬 Media Inspector & Credits")
+        st.subheader("Media Inspector & Credits")
         
         if not selected_assets.empty:
             primary_asset = selected_assets.iloc[0]
@@ -240,7 +240,7 @@ else:
             elif primary_asset.get("thumbnail_url"):
                 st.image(primary_asset["thumbnail_url"], caption="Static Image Preview (No direct stream found)", width="stretch")
             else:
-                st.warning("⚠️ No direct web stream available for primary asset.")
+                st.warning("No direct web stream available for primary asset.")
 
             st.divider()
 
