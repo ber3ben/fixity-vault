@@ -1,4 +1,4 @@
-# Streamlit Secrets (NEVER COMMIT THIS FILE)
+# Streamlit Secrets 
 .streamlit/secrets.toml
 
 # Streamlit Local Cache & Runtime
@@ -18,7 +18,6 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-PORTFOLIO_PASSWORD = "YourSecretPassword123"
 
 # Optional: Add any future API keys or tokens here
 # IA_API_KEY = "your_key_here"
